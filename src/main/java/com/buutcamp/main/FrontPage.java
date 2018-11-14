@@ -22,7 +22,7 @@ public class FrontPage {
     @GetMapping("/")
     public String frontPageGet(Model model){
 
-   //     kulutusDao.saveKulutusLukemat();
+       kulutusDao.saveKulutusLukemat();
         model.addAttribute("testVar", "Use the buttons for action" );
 
 
@@ -41,9 +41,6 @@ public class FrontPage {
     public String printElectricityConsumption( Model model) {
         List<KulutusLukema> kulutukset = kulutusDao.getKulutusLukemat();
 
-        //       for(KulutusLukema s : kulutukset) {
-        //          System.out.println(s);
-        //     }
         model.addAttribute("kulutukset", kulutukset);
         model.addAttribute("kulutus", new KulutusLukema());
 

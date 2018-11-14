@@ -37,19 +37,14 @@ public class WebMvcConfig implements WebMvcConfigurer {
     @Bean
     public LocalSessionFactoryBean sessionFactory() throws SQLException {
 
-        //initialize sesionfacotrybean
-
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
 
-        //set session factory data source
         sessionFactory.setDataSource(myDataSource());
 
-
-        //tell hibernate where to find classes to managa
         sessionFactory.setPackagesToScan("com.buutcamp.other");
-        //set hibernate properties
+
         sessionFactory.setHibernateProperties(hibernateProperties());
-        //return sessionfactory
+
         return sessionFactory;
 
     }
@@ -68,17 +63,6 @@ public class WebMvcConfig implements WebMvcConfigurer {
     }
 
     DataSource myDataSource() throws SQLException {
-        // create datasource
-       /*
-       MysqlDataSource dataSource = new MysqlDataSource();
-
-       //set connnection info
-
-       dataSource.setDatabaseName("dev_db");
-       dataSource.setUser("devuser");
-       dataSource.setPassword("password1");
-        */
-        //return the datasource
 
         BasicDataSource dataSource = new BasicDataSource();
 
@@ -93,7 +77,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     Properties hibernateProperties() {
         return new Properties() {
             {
-                setProperty("hibernate.hbm2ddl.auto", "update");
+                setProperty("hibernate.hbm2ddl.auto", "create");
                 setProperty("hibernate.show_sql", "true");
                 setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL8Dialect");
             }

@@ -21,13 +21,8 @@ import java.util.List;
 public class KulutusDao {
 
 
-    //make spring recognize this class a a repository
-
-    // get  a sessionFactory reference, to access data
     @Autowired
     private SessionFactory sessionFactory;
-
-    //get all data in database
 
     @Transactional
 
@@ -37,10 +32,7 @@ public class KulutusDao {
 
 
         Query<KulutusLukema> query = session.createQuery("from KulutusLukema", KulutusLukema.class);
-        //   session.getTransaction().commit();
 
-
-        //List<Student>mylistt=query.getResultList();
         return query.getResultList();
 
 
@@ -82,18 +74,16 @@ public class KulutusDao {
                     //getCellTypeEnum shown as deprecated for version 3.15
                     //getCellTypeEnum ill be renamed to getCellType starting from version 4.0
                     if (currentCell.getCellTypeEnum() == CellType.STRING) {
-                        System.out.print(currentCell.getStringCellValue() + "--");
                         aika = currentCell.getStringCellValue();
                         cellNbr++;
 
                     } else if (currentCell.getCellTypeEnum() == CellType.NUMERIC) {
-                        //              System.out.print(currentCell.getNumericCellValue() + "--");
                         if (cellNbr == 1) {
                             mlukema = currentCell.getNumericCellValue();
                             cellNbr++;
                         } else {
                             paiva_kl = currentCell.getNumericCellValue();
-                            //                         System.out.print(cellNbr);
+
                             cellNbr = 0;
                         }
                     }

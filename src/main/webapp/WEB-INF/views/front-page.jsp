@@ -37,12 +37,12 @@
 
     </form:form>
 
-    <form:form method="POST" action="saveConsumptions">
+ <!-- <form:form method="POST" action="saveConsumptions">
 
         <input type="submit" value="save Electricity Consumption values, but only once !!!" /></br></br>
 
     </form:form>
-
+-->
     <form:form method="POST" action="printOneDayConsumption">
 
 
